@@ -19,31 +19,27 @@ import com.appsdeveloperblog.app.ws.ui.model.response.UserRest;
 @RequestMapping("users")
 public class UserController {
 
+	// Interface
 	@Autowired
 	UserService userService;
-	
+
 	@GetMapping
 	public String getUser() {
 		return "Get user was called";
 	}
-//	
-	@PostMapping
-	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails ) {
-		
-//		
 
-		UserRest returnValue = new UserRest();
-		
+	@PostMapping
+	public UserRest createUser(@RequestBody UserDetailsRequestModel userDetails) {
+
+		// Define user data
 		UserDto userDto = new UserDto();
 		BeanUtils.copyProperties(userDetails, userDto);
-//
-//		System.out.println("****** USER DETAILS"+userDetails);
-//
-//
+
 		UserDto createdUser = userService.createUser(userDto);
-//
+
+		UserRest returnValue = new UserRest();
 		BeanUtils.copyProperties(createdUser, returnValue);
-//
+
 		return returnValue;
 	}
 

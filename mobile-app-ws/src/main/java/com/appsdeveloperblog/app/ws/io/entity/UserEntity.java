@@ -7,12 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+// ***
+// ***  SCHHEMA FOR THE DB
+//////
 @Entity(name = "users")
 public class UserEntity implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5313493413859894403L;
 
 	@Id
@@ -102,7 +102,5 @@ public class UserEntity implements Serializable {
 	public void setEmailVerificationStatus(Boolean emailVerificationStatus) {
 		this.emailVerificationStatus = emailVerificationStatus;
 	}
-	
-	
-	
+
 }

@@ -14,7 +14,7 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Override
 	public UserDto createUser(UserDto user) {
 
@@ -24,10 +24,13 @@ public class UserServiceImpl implements UserService {
 		userEntity.setEncryptedPassword("test");
 		userEntity.setUserId("user01");
 
+		// SAVE IN THE DATABASE
 		UserEntity storedUserDetails = userRepository.save(userEntity);
+
+		// MAKE REFERENCE TO THE USER OBJECT AND RETURN
 		UserDto returnValue = new UserDto();
 		BeanUtils.copyProperties(storedUserDetails, returnValue);
-		
+
 		return returnValue;
 	}
 
